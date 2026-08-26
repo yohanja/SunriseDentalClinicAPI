@@ -1,4 +1,4 @@
-package com.sunrise;
+package com.sunrise.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

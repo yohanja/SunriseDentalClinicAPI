@@ -1,5 +1,7 @@
 package com.sunrise;
 
+import com.sunrise.util.DBConnection;
+
 import java.sql.Connection;
 
 public class Main {
