@@ -11,14 +11,19 @@ public class DBConnection {
 
     }
     public static Connection getConnection() {
-        if (connection == null){
-            try{
+        if (connection == null) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
                 String url = "jdbc:mysql://127.0.0.1:3306/sunrise_dental_clinic";
                 String username = "root";
                 String password = "Yohan@002470";
 
                 connection = DriverManager.getConnection(url, username, password);
-                System.out.println("Database connected successfully");
+                System.out.println("Database connected successfully!");
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
