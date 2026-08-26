@@ -3,6 +3,7 @@ package com.sunrise.dao;
 import com.sunrise.util.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PatientDAO {
@@ -26,4 +27,32 @@ public class PatientDAO {
             return false;
         }
     }
+
+    public String getPatientById(int patientId) {
+        String sql = "SELECT * FROM Patient WHERE patient_id = ?";
+        StringBuilder result = new StringBuilder();
+
+        try{
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,patientId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()){
+                result.append("ID: ").append(rs.getInt("patient_id"))
+                        .append(", Name: ").append(rs.getString("patient_name"))
+                        .append(", Address: ").append(rs.getString("address"))
+                        .append(", Contact: ").append(rs.getString("contact_number"));
+
+            }else{
+                result.append("No patient found with ID: ").append(patientId);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            result.append("Error retrieving patient");
+        }
+        return result.toString();
+    }
+
 }
