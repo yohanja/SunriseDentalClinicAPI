@@ -1,0 +1,46 @@
+package com.sunrise.servlet;
+
+import com.sunrise.dao.AppointmentDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/appointment")
+public class AppointmentServlet extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+
+        String patientIdParam = request.getParameter("patientId");
+        String dentistIdParam = request.getParameter("dentistId");
+        String treatmentType = request.getParameter("treatmentType");
+        String appointmentDate = request.getParameter("appointmentDate");
+        String appointmentTime = request.getParameter("appointmentTime");
+
+        if (patientIdParam == null || dentistIdParam == null || treatmentType == null
+                || appointmentDate == null || appointmentTime == null) {
+            out.print("{\"error\": \"Missing required fields\"}");
+            return;
+        }
+
+        int patientId = Integer.parseInt(patientIdParam);
+        int dentistId = Integer.parseInt(dentistIdParam);
+
+        AppointmentDAO appointmentDAO = new AppointmentDAO();
+        boolean success = appointmentDAO.addAppointment(patientId, dentistId, treatmentType, appointmentDate, appointmentTime);
+
+        if (success) {
+            out.print("{\"message\": \"Appointment booked successfully\"}");
+        } else {
+            out.print("{\"error\": \"Failed to book appointment\"}");
+        }
+    }
+}
