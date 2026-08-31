@@ -43,4 +43,24 @@ public class AppointmentServlet extends HttpServlet {
             out.print("{\"error\": \"Failed to book appointment\"}");
         }
     }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+
+        String idParam = request.getParameter("id");
+
+        if (idParam == null) {
+            out.print("{\"error\": \"Please provide an appointment id, e.g. /appointment?id=1\"}");
+            return;
+        }
+
+        int appointmentId = Integer.parseInt(idParam);
+        AppointmentDAO appointmentDAO = new AppointmentDAO();
+        String result = appointmentDAO.getAppointmentById(appointmentId);
+
+        out.print("{\"result\": \"" + result + "\"}");
+    }
 }
