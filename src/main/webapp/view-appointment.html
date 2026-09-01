@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - View Appointment</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+<header class="topbar">
+    <a href="dashboard.html"><img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small"></a>
+    <div class="topbar-icons">
+        <a href="dashboard.html" class="icon-btn" title="Dashboard"><i class="fa-solid fa-house"></i></a>
+        <a href="help.html" class="icon-btn" title="Help"><i class="fa-solid fa-circle-question"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="form-card form-card-wide">
+        <h2><i class="fa-solid fa-magnifying-glass"></i> View Appointment Details</h2>
+
+        <div class="tab-switch">
+            <button type="button" class="tab-btn active" id="tabById" data-mode="id">By Appointment Number</button>
+            <button type="button" class="tab-btn" id="tabByContact" data-mode="contact">By Contact Number</button>
+        </div>
+
+        <form id="searchForm">
+            <div class="input-group" id="idField">
+                <label for="appointmentId">Appointment Number</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-hashtag"></i>
+                    <input type="number" id="appointmentId" name="appointmentId" min="1" placeholder="e.g. 1">
+                </div>
+            </div>
+
+            <div class="input-group" id="contactField" style="display:none;">
+                <label for="contactNumber">Contact Number</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" placeholder="07XXXXXXXX">
+                </div>
+            </div>
+
+            <button type="submit"><i class="fa-solid fa-search"></i> Search</button>
+        </form>
+
+        <p id="message"></p>
+
+        <div id="resultCard" class="result-card" style="display:none;">
+            <h3><i class="fa-solid fa-clipboard-list"></i> Appointment Found</h3>
+            <table class="detail-table">
+                <tr><td>Appointment ID</td><td id="resId"></td></tr>
+                <tr><td>Patient Name</td><td id="resPatient"></td></tr>
+                <tr><td>Dentist</td><td id="resDentist"></td></tr>
+                <tr><td>Treatment</td><td id="resTreatment"></td></tr>
+                <tr><td>Date</td><td id="resDate"></td></tr>
+                <tr><td>Time</td><td id="resTime"></td></tr>
+            </table>
+        </div>
+
+        <div id="resultList" style="display:none; margin-top:20px;">
+            <h3 style="color:#0F2A47; font-size:15px;"><i class="fa-solid fa-clipboard-list"></i> Appointments Found</h3>
+            <table class="detail-table" id="listTable">
+                <thead>
+                <tr><th>ID</th><th>Patient</th><th>Dentist</th><th>Treatment</th><th>Date</th><th>Time</th></tr>
+                </thead>
+                <tbody id="listTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<script src="js/view-appointment.js"></script>
+</body>
+</html>

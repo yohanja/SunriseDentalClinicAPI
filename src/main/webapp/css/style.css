@@ -15,11 +15,11 @@ body {
     box-shadow: 0 2px 10px rgba(22, 58, 95, 0.15);
     width: 300px;
     text-align: center;
-    border-top: 4px solid #163A5F;
+    border-top: 4px solid #0F2A47;
 }
 
 h1 {
-    color: #163A5F;
+    color: #0F2A47;
     font-size: 20px;
     margin-bottom: 5px;
 }
@@ -51,7 +51,7 @@ label {
 input {
     padding: 8px;
     margin-top: 5px;
-    border: 1px solid #38BDF8;
+    border: 1px solid #0EA5E9;
     border-radius: 4px;
     font-size: 14px;
     color: #172033;
@@ -59,14 +59,14 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #2563EB;
+    border-color: #1D4ED8;
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
 button {
     margin-top: 20px;
     padding: 10px;
-    background-color: #2563EB;
+    background-color: #1D4ED8;
     color: #FFFFFF;
     border: none;
     border-radius: 4px;
@@ -76,17 +76,17 @@ button {
 }
 
 button:hover {
-    background-color: #163A5F;
+    background-color: #0F2A47;
 }
 
 #message {
     margin-top: 15px;
     font-size: 14px;
-    color: #163A5F;
+    color: #0F2A47;
 }
 
 #message.success {
-    color: #14B8A6;
+    color: #0D9488;
 }
 
 #message.error {
@@ -127,7 +127,7 @@ button:hover {
 .icon-btn {
     background-color: #F4F8FC;
     border: 1px solid #E2E8F0;
-    color: #163A5F;
+    color: #0F2A47;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -144,8 +144,8 @@ button:hover {
 }
 
 .icon-btn:hover {
-    background-color: #2563EB;
-    border-color: #2563EB;
+    background-color: #1D4ED8;
+    border-color: #1D4ED8;
     color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
@@ -197,12 +197,12 @@ button:hover {
 .datetime-box p {
     margin: 4px 0;
     font-size: 13px;
-    color: #163A5F;
+    color: #0F2A47;
     font-weight: 500;
 }
 
 .datetime-box i {
-    color: #2563EB;
+    color: #1D4ED8;
     margin-right: 6px;
 }
 
@@ -232,7 +232,7 @@ button:hover {
 
 .stat-card i {
     font-size: 22px;
-    color: #2563EB;
+    color: #1D4ED8;
     background-color: rgba(37, 99, 235, 0.1);
     width: 52px;
     height: 52px;
@@ -244,19 +244,19 @@ button:hover {
 }
 
 .stat-card:nth-child(2) i {
-    color: #14B8A6;
+    color: #0D9488;
     background-color: rgba(20, 184, 166, 0.1);
 }
 
 .stat-card:nth-child(3) i {
-    color: #38BDF8;
+    color: #0EA5E9;
     background-color: rgba(56, 189, 248, 0.12);
 }
 
 .stat-number {
     font-size: 26px;
     font-weight: 700;
-    color: #163A5F;
+    color: #0F2A47;
     margin: 0;
     line-height: 1.2;
 }
@@ -286,7 +286,7 @@ button:hover {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(22, 58, 95, 0.06);
     text-decoration: none !important;
-    color: #163A5F !important;
+    color: #0F2A47 !important;
     font-weight: 600;
     font-size: 13px;
     text-align: center;
@@ -295,7 +295,7 @@ button:hover {
 
 .dashboard-main .menu-card i {
     font-size: 26px;
-    color: #2563EB;
+    color: #1D4ED8;
     background-color: rgba(37, 99, 235, 0.1);
     width: 54px;
     height: 54px;
@@ -309,7 +309,7 @@ button:hover {
 .dashboard-main .menu-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 24px rgba(37, 99, 235, 0.25);
-    background-color: #2563EB !important;
+    background-color: #1D4ED8 !important;
     color: #FFFFFF !important;
 }
 
@@ -327,7 +327,7 @@ button:hover {
 }
 
 .upcoming-section h3 {
-    color: #163A5F;
+    color: #0F2A47;
     margin: 0 0 16px;
     font-size: 16px;
     display: flex;
@@ -378,7 +378,7 @@ button:hover {
 }
 
 .form-card h2 {
-    color: #163A5F;
+    color: #0F2A47;
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 20px;
@@ -403,7 +403,7 @@ button:hover {
 .form-card select {
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #38BDF8;
+    border: 1px solid #0EA5E9;
     border-radius: 6px;
     font-size: 14px;
     color: #172033;
@@ -413,14 +413,14 @@ button:hover {
 .form-card input:focus,
 .form-card select:focus {
     outline: none;
-    border-color: #2563EB;
+    border-color: #1D4ED8;
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
 .form-card button {
     margin-top: 20px;
     padding: 12px;
-    background-color: #2563EB;
+    background-color: #1D4ED8;
     color: #FFFFFF;
     border: none;
     border-radius: 6px;
@@ -435,7 +435,7 @@ button:hover {
 }
 
 .form-card button:hover {
-    background-color: #163A5F;
+    background-color: #0F2A47;
 }
 
 .form-card-wide {
@@ -445,7 +445,7 @@ button:hover {
 .form-section-title {
     font-size: 12px;
     font-weight: 700;
-    color: #2563EB;
+    color: #1D4ED8;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     margin: 24px 0 12px;
@@ -485,7 +485,7 @@ button:hover {
 .input-with-icon i {
     position: absolute;
     left: 12px;
-    color: #2563EB;
+    color: #1D4ED8;
     font-size: 14px;
     pointer-events: none;
 }
@@ -515,7 +515,7 @@ button:hover {
 .input-with-icon input:focus,
 .input-with-icon select:focus {
     outline: none;
-    border-color: #2563EB;
+    border-color: #1D4ED8;
     background-color: #FFFFFF;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
@@ -531,3 +531,88 @@ button:hover {
     }
 }
 /*Appointment Style End*/
+
+/*View Appointment Style Start*/
+.result-card {
+    margin-top: 20px;
+    background-color: #F4F8FC;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #EEF3F9;
+}
+
+.result-card h3 {
+    color: #0F2A47;
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detail-table td {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.detail-table td:first-child {
+    color: #64748B;
+    /*width: 40%;*/
+}
+
+.detail-table td:last-child {
+    color: #172033;
+    font-weight: 500;
+}
+
+.tab-switch {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    background-color: #F4F8FC;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.form-card-wide .tab-switch .tab-btn {
+    width: auto !important;
+    flex: 1;
+    background-color: transparent !important;
+    border: none;
+    padding: 10px 16px !important;
+    margin-top: 0 !important;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748B !important;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.form-card-wide .tab-switch .tab-btn.active {
+    background-color: #FFFFFF !important;
+    color: #0F2A47 !important;
+    box-shadow: 0 1px 4px rgba(22, 58, 95, 0.12);
+}
+
+.form-card-wide .tab-switch .tab-btn:hover:not(.active) {
+    color: #0F2A47 !important;
+}
+
+#listTable th {
+    text-align: left;
+    color: #64748B;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    border-bottom: 2px solid #E2E8F0;
+}
+/*View Appointment Style End*/
+

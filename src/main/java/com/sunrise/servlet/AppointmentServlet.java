@@ -62,16 +62,21 @@ public class AppointmentServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String idParam = request.getParameter("id");
+        String contactParam = request.getParameter("contact");
 
-        if (idParam == null) {
-            out.print("{\"error\": \"Please provide an appointment id, e.g. /appointment?id=1\"}");
-            return;
-        }
-
-        int appointmentId = Integer.parseInt(idParam);
         AppointmentDAO appointmentDAO = new AppointmentDAO();
-        String result = appointmentDAO.getAppointmentById(appointmentId);
 
-        out.print("{\"result\": \"" + result + "\"}");
+        if (idParam != null) {
+            int appointmentId = Integer.parseInt(idParam);
+            String result = appointmentDAO.getAppointmentById(appointmentId);
+            out.print("{\"result\": \"" + result + "\"}");
+
+        } else if (contactParam != null) {
+            String result = appointmentDAO.getAppointmentsByContact(contactParam);
+            out.print("{\"results\": " + result + "}");
+
+        } else {
+            out.print("{\"error\": \"Please provide either an appointment id or a contact number\"}");
+        }
     }
 }
