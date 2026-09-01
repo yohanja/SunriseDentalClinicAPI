@@ -27,6 +27,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function(e
     formData.append("patientName", document.getElementById("patientName").value);
     formData.append("address", document.getElementById("address").value);
     formData.append("contactNumber", document.getElementById("contactNumber").value);
+    formData.append("email", document.getElementById("email").value);
     formData.append("treatmentType", document.getElementById("treatmentType").value);
     formData.append("dentistId", document.getElementById("dentistId").value);
     formData.append("appointmentDate", document.getElementById("appointmentDate").value);

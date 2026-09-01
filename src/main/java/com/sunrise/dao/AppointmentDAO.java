@@ -8,22 +8,22 @@ import java.sql.SQLException;
 
 public class AppointmentDAO {
 
-    public boolean addAppointment(String patientName, String address, String contactNumber,
-                                  int dentistId, String treatmentType,
-                                  String appointmentDate, String appointmentTime) {
+    public int addAppointment(String patientName, String address, String contactNumber, String email,
+                              int dentistId, String treatmentType,
+                              String appointmentDate, String appointmentTime) {
 
         PatientDAO patientDAO = new PatientDAO();
-        int patientId = patientDAO.findOrCreatePatient(patientName, address, contactNumber);
+        int patientId = patientDAO.findOrCreatePatient(patientName, address, contactNumber, email);
 
         if (patientId == -1) {
-            return false;
+            return -1;
         }
 
         String sql = "INSERT INTO Appointment (patient_id, dentist_id, treatment_type, appointment_date, appointment_time) VALUES (?, ?, ?, ?, ?)";
 
         try {
             Connection conn = DBConnection.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 
             stmt.setInt(1, patientId);
             stmt.setInt(2, dentistId);
@@ -32,12 +32,19 @@ public class AppointmentDAO {
             stmt.setString(5, appointmentTime);
 
             int rowsInserted = stmt.executeUpdate();
-            return rowsInserted > 0;
+
+            if (rowsInserted > 0) {
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                }
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+
+        return -1;
     }
 
     public String getAppointmentById(int appointmentId) {

@@ -31,4 +31,23 @@ public class DentistDAO {
         json.append("]");
         return json.toString();
     }
+
+    public String getDentistNameById(int dentistId) {
+        String sql = "SELECT dentist_name FROM Dentist WHERE dentist_id = ?";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, dentistId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("dentist_name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Unknown";
+    }
 }

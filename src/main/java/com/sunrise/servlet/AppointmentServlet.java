@@ -1,6 +1,8 @@
 package com.sunrise.servlet;
 
 import com.sunrise.dao.AppointmentDAO;
+import com.sunrise.dao.DentistDAO;
+import com.sunrise.util.EmailService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,6 +24,7 @@ public class AppointmentServlet extends HttpServlet {
         String patientName = request.getParameter("patientName");
         String address = request.getParameter("address");
         String contactNumber = request.getParameter("contactNumber");
+        String email = request.getParameter("email");
         String dentistIdParam = request.getParameter("dentistId");
         String treatmentType = request.getParameter("treatmentType");
         String appointmentDate = request.getParameter("appointmentDate");
@@ -36,10 +39,17 @@ public class AppointmentServlet extends HttpServlet {
         int dentistId = Integer.parseInt(dentistIdParam);
 
         AppointmentDAO appointmentDAO = new AppointmentDAO();
-        boolean success = appointmentDAO.addAppointment(patientName, address, contactNumber, dentistId, treatmentType, appointmentDate, appointmentTime);
+        int appointmentId = appointmentDAO.addAppointment(patientName, address, contactNumber, email,
+                dentistId, treatmentType, appointmentDate, appointmentTime);
 
-        if (success) {
-            out.print("{\"message\": \"Appointment booked successfully\"}");
+        if (appointmentId != -1) {
+            DentistDAO dentistDAO = new DentistDAO();
+            String dentistName = dentistDAO.getDentistNameById(dentistId);
+
+            EmailService.sendAppointmentConfirmation(email, appointmentId, patientName,
+                    dentistName, treatmentType, appointmentDate, appointmentTime);
+
+            out.print("{\"message\": \"Appointment booked successfully. Appointment ID: " + appointmentId + "\"}");
         } else {
             out.print("{\"error\": \"Failed to book appointment\"}");
         }

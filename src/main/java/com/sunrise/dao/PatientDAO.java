@@ -81,7 +81,7 @@ public class PatientDAO {
     }
 
     //find or create patient method
-    public int findOrCreatePatient(String name, String address, String contactNumber) {
+    public int findOrCreatePatient(String name, String address, String contactNumber, String email) {
         String findSql = "SELECT patient_id FROM Patient WHERE contact_number = ?";
 
         try {
@@ -94,11 +94,12 @@ public class PatientDAO {
                 return rs.getInt("patient_id");
             }
 
-            String insertSql = "INSERT INTO Patient (patient_name, address, contact_number) VALUES (?, ?, ?)";
+            String insertSql = "INSERT INTO Patient (patient_name, address, contact_number, email) VALUES (?, ?, ?, ?)";
             PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS);
             insertStmt.setString(1, name);
             insertStmt.setString(2, address);
             insertStmt.setString(3, contactNumber);
+            insertStmt.setString(4, email);
             insertStmt.executeUpdate();
 
             ResultSet generatedKeys = insertStmt.getGeneratedKeys();
