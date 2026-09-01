@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - Help</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+<header class="topbar">
+    <a href="dashboard.html"><img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small"></a>
+    <div class="topbar-icons">
+        <a href="dashboard.html" class="icon-btn" title="Dashboard"><i class="fa-solid fa-house"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="help-layout">
+
+        <div class="help-search-card">
+            <h2><i class="fa-solid fa-circle-question"></i> Help &amp; Instructions</h2>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="helpSearch" placeholder="Search help topics...">
+            </div>
+
+            <div class="help-quicklinks" id="quickLinks">
+                <button class="quicklink-btn" data-target="topic-login"><i class="fa-solid fa-right-to-bracket"></i> Logging In</button>
+                <button class="quicklink-btn" data-target="topic-appointment"><i class="fa-solid fa-calendar-plus"></i> New Appointment</button>
+                <button class="quicklink-btn" data-target="topic-view"><i class="fa-solid fa-magnifying-glass"></i> View Appointment</button>
+                <button class="quicklink-btn" data-target="topic-bill"><i class="fa-solid fa-file-invoice-dollar"></i> Generate Bill</button>
+                <button class="quicklink-btn" data-target="topic-logout"><i class="fa-solid fa-right-from-bracket"></i> Logging Out</button>
+            </div>
+        </div>
+
+        <div class="help-accordion" id="helpAccordion">
+
+            <div class="accordion-item" id="topic-login">
+                <button class="accordion-header">
+                    <span><i class="fa-solid fa-right-to-bracket"></i> Logging In</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Use your assigned staff username and password to log in. Once logged in, your session stays active until you log out.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="topic-appointment">
+                <button class="accordion-header">
+                    <span><i class="fa-solid fa-calendar-plus"></i> Registering a New Appointment</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Go to <strong>New Appointment</strong> from the dashboard. Enter the patient's name, address, contact number, and email. Select the treatment type and dentist, then choose a date and time.</p>
+                    <p>If the contact number matches an existing patient, their record is reused automatically — no duplicate entries are created. A confirmation email is sent to the patient upon successful booking.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="topic-view">
+                <button class="accordion-header">
+                    <span><i class="fa-solid fa-magnifying-glass"></i> Viewing Appointment Details</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Go to <strong>View Appointment</strong>. You can search either by the Appointment Number, or by the patient's Contact Number to see all their appointments.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="topic-bill">
+                <button class="accordion-header">
+                    <span><i class="fa-solid fa-file-invoice-dollar"></i> Generating a Bill</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Go to <strong>Generate Bill</strong> and enter the Appointment Number. The system automatically calculates the treatment cost plus a fixed consultation fee.</p>
+                    <p>Once generated, click <strong>Mark as Paid</strong> to confirm payment, then <strong>Print Receipt</strong> to produce a printable copy for the patient.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" id="topic-logout">
+                <button class="accordion-header">
+                    <span><i class="fa-solid fa-right-from-bracket"></i> Logging Out</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
+                    <p>Click the logout icon in the top-right corner at any time to safely end your session.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script src="js/dashboard.js"></script>
+<script src="js/help.js"></script>
+</body>
+</html>
