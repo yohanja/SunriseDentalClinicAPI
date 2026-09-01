@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo">
+        <h2>Welcome, <span id="userDisplay"></span> </h2>
+        <p class="role-tag" id="roleDisplay"></p>
+
+        <div class="menu-grid">
+            <a href="appointment.html" class="menu-card">Register New Appointment</a>
+            <a href="view-appointment.html" class="menu-card">View Appointment Details</a>
+            <a href="patient.html" class="menu-card">View Patient Details</a>
+            <a href="bill.html" class="menu-card">Generate Bill</a>
+            <a href="help.html" class="menu-card">Help</a>
+        </div>
+
+        <button id="logoutBtn">Logout</button>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
