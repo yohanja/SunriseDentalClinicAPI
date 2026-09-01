@@ -55,4 +55,62 @@ public class PatientDAO {
         return result.toString();
     }
 
+//    Add lookup method for Dashboard - easy reference
+    public String getAllPatientsJson() {
+        String sql = "SELECT patient_id, patient_name FROM Patient";
+        StringBuilder json = new StringBuilder("[");
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            boolean first = true;
+            while (rs.next()) {
+                if (!first) json.append(",");
+                first = false;
+                json.append("{\"id\":").append(rs.getInt("patient_id"))
+                        .append(",\"name\":\"").append(rs.getString("patient_name")).append("\"}");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        json.append("]");
+        return json.toString();
+    }
+
+    //find or create patient method
+    public int findOrCreatePatient(String name, String address, String contactNumber) {
+        String findSql = "SELECT patient_id FROM Patient WHERE contact_number = ?";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement findStmt = conn.prepareStatement(findSql);
+            findStmt.setString(1, contactNumber);
+            ResultSet rs = findStmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("patient_id");
+            }
+
+            String insertSql = "INSERT INTO Patient (patient_name, address, contact_number) VALUES (?, ?, ?)";
+            PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS);
+            insertStmt.setString(1, name);
+            insertStmt.setString(2, address);
+            insertStmt.setString(3, contactNumber);
+            insertStmt.executeUpdate();
+
+            ResultSet generatedKeys = insertStmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
+
 }

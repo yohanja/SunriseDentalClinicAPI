@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - New Appointment</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+<header class="topbar">
+    <a href="dashboard.html"><img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small"></a>
+    <div class="topbar-icons">
+        <a href="dashboard.html" class="icon-btn" title="Dashboard"><i class="fa-solid fa-house"></i></a>
+        <a href="help.html" class="icon-btn" title="Help"><i class="fa-solid fa-circle-question"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="form-card form-card-wide">
+        <h2><i class="fa-solid fa-calendar-plus"></i> Register New Appointment</h2>
+
+        <form id="appointmentForm">
+
+            <p class="form-section-title">Patient Information</p>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="patientName">Patient Name</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="patientName" name="patientName" required placeholder="Enter full name">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{10}" title="Enter a 10-digit contact number" placeholder="07XXXXXXXX">
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="address">Address</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" id="address" name="address" required placeholder="Street, City">
+                </div>
+            </div>
+
+            <p class="form-section-title">Appointment Details</p>
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="treatmentType">Treatment Type</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-tooth"></i>
+                        <select id="treatmentType" name="treatmentType" required>
+                            <option value="">-- Select Treatment --</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Filling">Filling</option>
+                            <option value="Extraction">Extraction</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="dentistId">Dentist</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <select id="dentistId" name="dentistId" required>
+                            <option value="">-- Select Dentist --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="input-group">
+                    <label for="appointmentDate">Appointment Date</label>
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-calendar"></i>
+                        <input type="date" id="appointmentDate" name="appointmentDate" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="appointmentTime">Appointment Time</label>
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-clock"></i>
+                        <input type="time" id="appointmentTime" name="appointmentTime" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit"><i class="fa-solid fa-check"></i> Book Appointment</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+</main>
+
+<script src="js/appointment.js"></script>
+</body>
+</html>

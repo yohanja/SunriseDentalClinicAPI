@@ -19,23 +19,24 @@ public class AppointmentServlet extends HttpServlet {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
 
-        String patientIdParam = request.getParameter("patientId");
+        String patientName = request.getParameter("patientName");
+        String address = request.getParameter("address");
+        String contactNumber = request.getParameter("contactNumber");
         String dentistIdParam = request.getParameter("dentistId");
         String treatmentType = request.getParameter("treatmentType");
         String appointmentDate = request.getParameter("appointmentDate");
         String appointmentTime = request.getParameter("appointmentTime");
 
-        if (patientIdParam == null || dentistIdParam == null || treatmentType == null
-                || appointmentDate == null || appointmentTime == null) {
+        if (patientName == null || address == null || contactNumber == null || dentistIdParam == null
+                || treatmentType == null || appointmentDate == null || appointmentTime == null) {
             out.print("{\"error\": \"Missing required fields\"}");
             return;
         }
 
-        int patientId = Integer.parseInt(patientIdParam);
         int dentistId = Integer.parseInt(dentistIdParam);
 
         AppointmentDAO appointmentDAO = new AppointmentDAO();
-        boolean success = appointmentDAO.addAppointment(patientId, dentistId, treatmentType, appointmentDate, appointmentTime);
+        boolean success = appointmentDAO.addAppointment(patientName, address, contactNumber, dentistId, treatmentType, appointmentDate, appointmentTime);
 
         if (success) {
             out.print("{\"message\": \"Appointment booked successfully\"}");
