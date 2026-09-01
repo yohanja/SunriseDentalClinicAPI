@@ -41,7 +41,3 @@ window.addEventListener("DOMContentLoaded", function() {
 
 });
 
-document.getElementById("logoutBtn").addEventListener("click", function() {
-    sessionStorage.clear();
-    window.location.href = "login.html";
-});
