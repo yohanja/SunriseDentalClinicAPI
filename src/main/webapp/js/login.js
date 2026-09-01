@@ -21,14 +21,24 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
             if (data.message) {
                 messageBox.textContent = data.message + " (" + data.role + ")";
                 messageBox.className = "success";
+
+                //clear the input fields
+                document.getElementById("username").value = "";
+                document.getElementById("password").value = "";
+
             } else {
                 messageBox.textContent = data.error;
                 messageBox.className = "error";
             }
+            //clear the input fields
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+
         })
         .catch(error => {
             messageBox.textContent = "Something went wrong. Please try again.";
             messageBox.className = "error";
             console.error(error);
         });
+
 });
