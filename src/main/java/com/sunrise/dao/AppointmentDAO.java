@@ -119,4 +119,41 @@ public class AppointmentDAO {
         json.append("]");
         return json.toString();
     }
+
+    public String getAppointmentHistoryByPatientId(int patientId) {
+        String sql = "SELECT a.appointment_id, d.dentist_name, a.treatment_type, a.appointment_date, a.appointment_time " +
+                "FROM Appointment a " +
+                "JOIN Dentist d ON a.dentist_id = d.dentist_id " +
+                "WHERE a.patient_id = ? " +
+                "ORDER BY a.appointment_date DESC";
+
+        StringBuilder json = new StringBuilder("[");
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, patientId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            boolean first = true;
+            while (rs.next()) {
+                if (!first) json.append(",");
+                first = false;
+
+                json.append("{")
+                        .append("\"id\":").append(rs.getInt("appointment_id")).append(",")
+                        .append("\"dentist\":\"").append(rs.getString("dentist_name")).append("\",")
+                        .append("\"treatment\":\"").append(rs.getString("treatment_type")).append("\",")
+                        .append("\"date\":\"").append(rs.getDate("appointment_date")).append("\",")
+                        .append("\"time\":\"").append(rs.getTime("appointment_time")).append("\"")
+                        .append("}");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        json.append("]");
+        return json.toString();
+    }
 }

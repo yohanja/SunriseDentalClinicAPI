@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - Patient Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+<header class="topbar">
+    <a href="dashboard.html"><img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small"></a>
+    <div class="topbar-icons">
+        <a href="dashboard.html" class="icon-btn" title="Dashboard"><i class="fa-solid fa-house"></i></a>
+        <a href="help.html" class="icon-btn" title="Help"><i class="fa-solid fa-circle-question"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="form-card form-card-wide">
+        <h2><i class="fa-solid fa-address-card"></i> Patient Details</h2>
+
+        <form id="patientSearchForm">
+            <div class="input-group">
+                <label for="searchQuery">Search by Name or Contact Number</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchQuery" name="searchQuery" required placeholder="e.g. Nimal or 0771234567">
+                </div>
+            </div>
+
+            <button type="submit"><i class="fa-solid fa-search"></i> Search</button>
+        </form>
+
+        <p id="message"></p>
+
+        <div id="searchResults" class="patient-results" style="display:none;"></div>
+
+        <div id="patientProfile" class="result-card" style="display:none; margin-top:20px;">
+            <div class="patient-header">
+                <div class="patient-avatar" id="pAvatar"></div>
+                <div>
+                    <h3 id="pNameHeader" style="margin:0; font-size:16px; color:#0F2A47;"></h3>
+                    <p style="margin:2px 0 0; font-size:12px; color:#64748B;" id="pContactHeader"></p>
+                </div>
+                <div class="patient-visit-badge" id="visitBadge"></div>
+            </div>
+
+            <table class="detail-table">
+                <tr><td>Patient ID</td><td id="pId"></td></tr>
+                <tr><td>Address</td><td id="pAddress"></td></tr>
+                <tr><td>Email</td><td id="pEmail"></td></tr>
+            </table>
+
+            <h3 style="margin-top:20px;"><i class="fa-solid fa-clock-rotate-left"></i> Appointment History</h3>
+            <table class="detail-table" id="historyTable">
+                <thead>
+                <tr><th>ID</th><th>Dentist</th><th>Treatment</th><th>Date</th><th>Time</th></tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<script src="js/auth.js"></script>
+<script src="js/patient.js"></script>
+</body>
+</html>

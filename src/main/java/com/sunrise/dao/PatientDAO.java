@@ -114,4 +114,62 @@ public class PatientDAO {
         return -1;
     }
 
+    public String searchPatientsJson(String query) {
+        String sql = "SELECT patient_id, patient_name, address, contact_number, email FROM Patient " +
+                "WHERE patient_name LIKE ? OR contact_number LIKE ?";
+        StringBuilder json = new StringBuilder("[");
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + query + "%");
+            stmt.setString(2, "%" + query + "%");
+
+            ResultSet rs = stmt.executeQuery();
+
+            boolean first = true;
+            while (rs.next()) {
+                if (!first) json.append(",");
+                first = false;
+                json.append("{")
+                        .append("\"id\":").append(rs.getInt("patient_id")).append(",")
+                        .append("\"name\":\"").append(rs.getString("patient_name")).append("\",")
+                        .append("\"address\":\"").append(rs.getString("address")).append("\",")
+                        .append("\"contact\":\"").append(rs.getString("contact_number")).append("\",")
+                        .append("\"email\":\"").append(rs.getString("email") != null ? rs.getString("email") : "").append("\"")
+                        .append("}");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        json.append("]");
+        return json.toString();
+    }
+
+    public String getPatientDetailsJson(int patientId) {
+        String sql = "SELECT patient_id, patient_name, address, contact_number, email FROM Patient WHERE patient_id = ?";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, patientId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return "{"
+                        + "\"id\":" + rs.getInt("patient_id") + ","
+                        + "\"name\":\"" + rs.getString("patient_name") + "\","
+                        + "\"address\":\"" + rs.getString("address") + "\","
+                        + "\"contact\":\"" + rs.getString("contact_number") + "\","
+                        + "\"email\":\"" + (rs.getString("email") != null ? rs.getString("email") : "") + "\""
+                        + "}";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "{\"error\": \"Patient not found\"}";
+    }
+
 }

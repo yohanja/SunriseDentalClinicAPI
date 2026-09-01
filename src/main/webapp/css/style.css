@@ -935,4 +935,89 @@ button:hover {
     box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
 }
 /*Help Style End*/
+/*Patient Style Start*/
+.patient-results {
+    margin-top: 16px;
+}
+
+.patient-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #F4F8FC;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.patient-result-item:hover {
+    background-color: #E2E8F0;
+}
+
+.patient-result-item .result-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #1D4ED8;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.patient-result-item .pname {
+    font-weight: 600;
+    color: #0F2A47;
+    font-size: 14px;
+}
+
+.patient-result-item .pcontact {
+    font-size: 12px;
+    color: #64748B;
+}
+
+.patient-result-item i.fa-chevron-right {
+    margin-left: auto;
+    color: #94A3B8;
+    font-size: 12px;
+}
+.patient-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #EEF3F9;
+}
+
+.patient-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #1D4ED8;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.patient-visit-badge {
+    margin-left: auto;
+    background-color: rgba(13, 148, 136, 0.12);
+    color: #0D9488;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+/*Patient Style End*/
 

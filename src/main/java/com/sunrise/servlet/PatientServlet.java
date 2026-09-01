@@ -1,5 +1,6 @@
 package com.sunrise.servlet;
 
+import com.sunrise.dao.AppointmentDAO;
 import com.sunrise.dao.PatientDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,14 +21,29 @@ public class PatientServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String idParam = request.getParameter("id");
+        String searchParam = request.getParameter("search");
+
         PatientDAO patientDAO = new PatientDAO();
 
         if (idParam != null) {
             int patientId = Integer.parseInt(idParam);
-            String result = patientDAO.getPatientById(patientId);
-            out.print("{\"result\": \"" + result + "\"}");
+
+            String patientJson = patientDAO.getPatientDetailsJson(patientId);
+
+            AppointmentDAO appointmentDAO = new AppointmentDAO();
+            String historyJson = appointmentDAO.getAppointmentHistoryByPatientId(patientId);
+
+            String combined = patientJson.substring(0, patientJson.length() - 1)
+                    + ",\"history\":" + historyJson + "}";
+
+            out.print(combined);
+
+        } else if (searchParam != null) {
+            String resultsJson = patientDAO.searchPatientsJson(searchParam);
+            out.print("{\"results\": " + resultsJson + "}");
+
         } else {
-            out.print("{\"error\": \"Please provide a patient id, e.g. /patient?id=1\"}");
+            out.print("{\"error\": \"Please provide either an id or a search query\"}");
         }
     }
 }
