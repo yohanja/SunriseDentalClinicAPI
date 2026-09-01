@@ -157,6 +157,9 @@ button:hover {
     padding: 40px 24px 60px;
 }
 
+.dashboard-main .menu-card.admin-hidden {
+    display: none !important;
+}
 .welcome-row {
     display: flex;
     justify-content: space-between;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - Register Doctor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+<header class="topbar">
+    <a href="dashboard.html"><img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small"></a>
+    <div class="topbar-icons">
+        <a href="dashboard.html" class="icon-btn" title="Dashboard"><i class="fa-solid fa-house"></i></a>
+        <a href="help.html" class="icon-btn" title="Help"><i class="fa-solid fa-circle-question"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="form-card">
+        <h2><i class="fa-solid fa-user-doctor"></i> Register Doctor</h2>
+
+        <form id="doctorForm">
+            <div class="input-group">
+                <label for="doctorName">Dentist Name</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="doctorName" name="doctorName" required placeholder="e.g. Dr. Amara Fernando">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="specialization">Specialization</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-tooth"></i>
+                    <select id="specialization" name="specialization" required>
+                        <option value="">-- Select Specialization --</option>
+                        <option value="General Dentistry">General Dentistry</option>
+                        <option value="Orthodontics">Orthodontics</option>
+                        <option value="Oral Surgery">Oral Surgery</option>
+                        <option value="Periodontics">Periodontics</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit"><i class="fa-solid fa-check"></i> Register Doctor</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+</main>
+
+<script src="js/auth.js"></script>
+<script src="js/register-doctor.js"></script>
+</body>
+</html>

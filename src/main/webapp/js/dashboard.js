@@ -39,5 +39,9 @@ window.addEventListener("DOMContentLoaded", function() {
     document.getElementById("userDisplay").textContent = username;
     document.getElementById("roleDisplay").textContent = role;
 
-});
+    if (role !== "Admin") {
+        document.getElementById("registerDoctorCard").classList.add("admin-hidden");
+    }
 
+
+});

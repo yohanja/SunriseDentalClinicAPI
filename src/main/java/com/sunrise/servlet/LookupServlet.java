@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,4 +33,43 @@ public class LookupServlet extends HttpServlet {
             out.print("{\"error\": \"Invalid lookup type\"}");
         }
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+
+        HttpSession session = request.getSession(false);
+        String role = (session != null) ? (String) session.getAttribute("role") : null;
+
+        if (role == null || !role.equals("Admin")) {
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            out.print("{\"error\": \"Access denied. Admin privileges required.\"}");
+            return;
+        }
+
+        String action = request.getParameter("action");
+
+        if ("addDentist".equals(action)) {
+            String name = request.getParameter("name");
+            String specialization = request.getParameter("specialization");
+
+            if (name == null || name.isEmpty()) {
+                out.print("{\"error\": \"Dentist name is required\"}");
+                return;
+            }
+
+            DentistDAO dentistDAO = new DentistDAO();
+            boolean success = dentistDAO.addDentist(name, specialization);
+
+            if (success) {
+                out.print("{\"message\": \"Dentist registered successfully\"}");
+            } else {
+                out.print("{\"error\": \"Failed to register dentist\"}");
+            }
+        } else {
+            out.print("{\"error\": \"Invalid action\"}");
+        }
+    }
 }
+

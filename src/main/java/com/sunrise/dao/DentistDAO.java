@@ -50,4 +50,21 @@ public class DentistDAO {
 
         return "Unknown";
     }
+    public boolean addDentist(String name, String specialization) {
+        String sql = "INSERT INTO Dentist (dentist_name, specialization) VALUES (?, ?)";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, name);
+            stmt.setString(2, specialization);
+
+            int rowsInserted = stmt.executeUpdate();
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
