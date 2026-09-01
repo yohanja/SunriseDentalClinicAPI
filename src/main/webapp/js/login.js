@@ -22,10 +22,16 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
                 messageBox.textContent = data.message + " (" + data.role + ")";
                 messageBox.className = "success";
 
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("role", data.role);
+
                 //clear the input fields
                 document.getElementById("username").value = "";
                 document.getElementById("password").value = "";
 
+                setTimeout(function() {
+                    window.location.href = "dashboard.html";
+                }, 1000);
             } else {
                 messageBox.textContent = data.error;
                 messageBox.className = "error";

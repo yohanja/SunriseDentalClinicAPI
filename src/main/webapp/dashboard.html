@@ -4,24 +4,79 @@
     <meta charset="UTF-8">
     <title>Sunrise Dental Clinic - Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
-    <div class="dashboard-container">
-        <img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo">
-        <h2>Welcome, <span id="userDisplay"></span> </h2>
-        <p class="role-tag" id="roleDisplay"></p>
+<body class="dashboard-body">
 
-        <div class="menu-grid">
-            <a href="appointment.html" class="menu-card">Register New Appointment</a>
-            <a href="view-appointment.html" class="menu-card">View Appointment Details</a>
-            <a href="patient.html" class="menu-card">View Patient Details</a>
-            <a href="bill.html" class="menu-card">Generate Bill</a>
-            <a href="help.html" class="menu-card">Help</a>
+<header class="topbar">
+    <img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small">
+    <div class="topbar-icons">
+        <a href="help.html" class="icon-btn" title="Help"><i class="fa-solid fa-circle-question"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="welcome-row">
+        <div>
+            <h2>Welcome, <span id="userDisplay"></span></h2>
+            <p class="role-tag" id="roleDisplay"></p>
         </div>
-
-        <button id="logoutBtn">Logout</button>
+        <div class="datetime-box">
+            <p id="dateDisplay"><i class="fa-regular fa-calendar"></i> Loading...</p>
+            <p id="timeDisplay"><i class="fa-regular fa-clock"></i> Loading...</p>
+        </div>
     </div>
 
-    <script src="js/dashboard.js"></script>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <i class="fa-solid fa-calendar-check"></i>
+            <div>
+                <p class="stat-number" id="appointmentCount">-</p>
+                <p class="stat-label">Total Appointments</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-user-doctor"></i>
+            <div>
+                <p class="stat-number" id="dentistCount">-</p>
+                <p class="stat-label">Dentists</p>
+            </div>
+        </div>
+        <div class="stat-card">
+            <i class="fa-solid fa-users"></i>
+            <div>
+                <p class="stat-number" id="patientCount">-</p>
+                <p class="stat-label">Patients</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-grid">
+        <a href="appointment.html" class="menu-card"><i class="fa-solid fa-calendar-plus"></i> New Appointment</a>
+        <a href="view-appointment.html" class="menu-card"><i class="fa-solid fa-magnifying-glass"></i> View Appointment</a>
+        <a href="patient.html" class="menu-card"><i class="fa-solid fa-address-card"></i> Patient Details</a>
+        <a href="bill.html" class="menu-card"><i class="fa-solid fa-file-invoice-dollar"></i> Generate Bill</a>
+    </div>
+
+    <div class="upcoming-section">
+        <h3><i class="fa-regular fa-clock"></i> Upcoming Appointments</h3>
+        <table id="upcomingTable">
+            <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Dentist</th>
+                <th>Treatment</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody id="upcomingTableBody">
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script src="js/dashboard.js"></script>
 </body>
 </html>
