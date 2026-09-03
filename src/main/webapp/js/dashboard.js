@@ -41,6 +41,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
     if (role !== "Admin") {
         document.getElementById("registerDoctorCard").classList.add("admin-hidden");
+        document.getElementById("manageStaffCard").classList.add("admin-hidden");
     }
 
 

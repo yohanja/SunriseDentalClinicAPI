@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sunrise Dental Clinic - Manage Staff</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="dashboard-body">
+
+<header class="topbar">
+    <a href="dashboard.html"><img src="images/SunriseDental_Logo.png" alt="Sunrise Dental Clinic Logo" class="logo-small"></a>
+    <div class="topbar-icons">
+        <a href="dashboard.html" class="icon-btn" title="Dashboard"><i class="fa-solid fa-house"></i></a>
+        <a href="help.html" class="icon-btn" title="Help"><i class="fa-solid fa-circle-question"></i></a>
+        <a href="profile.html" class="icon-btn" title="My Profile"><i class="fa-solid fa-user"></i></a>
+        <button id="logoutBtn" class="icon-btn" title="Logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+</header>
+
+<main class="dashboard-main">
+
+    <div class="staff-grid">
+
+        <div class="form-card">
+            <h2><i class="fa-solid fa-user-plus"></i> Register New Staff</h2>
+
+            <form id="registerStaffForm">
+                <div class="input-group">
+                    <label for="newUsername">Username</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="newUsername" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="newStaffPassword">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="newStaffPassword" minlength="6" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="newStaffRole">Role</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user-tag"></i>
+                        <select id="newStaffRole" required>
+                            <option value="" disabled selected>-- Select Role --</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit"><i class="fa-solid fa-check"></i> Register Account</button>
+            </form>
+
+            <p id="registerMessage"></p>
+        </div>
+
+        <div class="form-card">
+            <h2><i class="fa-solid fa-key"></i> Reset Staff Password</h2>
+
+            <form id="resetPasswordForm">
+                <div class="input-group">
+                    <label for="resetUsernameSelect">Select Staff Member</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <select id="resetUsernameSelect" required>
+                            <option value="" disabled selected>-- Select Staff --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="resetNewPassword">New Password</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="resetNewPassword" minlength="6" required>
+                    </div>
+                </div>
+
+                <button type="submit"><i class="fa-solid fa-key"></i> Reset Password</button>
+            </form>
+
+            <p id="resetMessage"></p>
+        </div>
+
+    </div>
+
+    <div class="form-card staff-list-card" style="margin-top: 24px;">
+        <h2><i class="fa-solid fa-users"></i> All Staff Accounts</h2>
+        <table id="staffTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Role</th>
+            </tr>
+            </thead>
+            <tbody id="staffTableBody"></tbody>
+        </table>
+    </div>
+
+</main>
+
+<script src="js/auth.js"></script>
+<script src="js/manage-staff.js"></script>
+</body>
+</html>
