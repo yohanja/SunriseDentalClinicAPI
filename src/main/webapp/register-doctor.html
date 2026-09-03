@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sunrise Dental Clinic - Manage Staff</title>
+    <title>Sunrise Dental Clinic - Register Doctor</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -19,97 +19,40 @@
 </header>
 
 <main class="dashboard-main">
+    <div class="form-card">
+        <h2><i class="fa-solid fa-user-doctor"></i> Register Doctor</h2>
 
-    <div class="staff-grid">
-
-        <!-- LEFT: Register new staff -->
-        <div class="form-card">
-            <h2><i class="fa-solid fa-user-plus"></i> Register New Staff</h2>
-
-            <form id="registerStaffForm">
-                <div class="input-group">
-                    <label for="newUsername">Username</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="text" id="newUsername" required>
-                    </div>
+        <form id="doctorForm">
+            <div class="input-group">
+                <label for="doctorName">Dentist Name</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="doctorName" name="doctorName" required placeholder="e.g. Dr. Amara Fernando">
                 </div>
+            </div>
 
-                <div class="input-group">
-                    <label for="newStaffPassword">Password</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="newStaffPassword" minlength="6" required>
-                    </div>
+            <div class="input-group">
+                <label for="specialization">Specialization</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-tooth"></i>
+                    <select id="specialization" name="specialization" required>
+                        <option value="">-- Select Specialization --</option>
+                        <option value="General Dentistry">General Dentistry</option>
+                        <option value="Orthodontics">Orthodontics</option>
+                        <option value="Oral Surgery">Oral Surgery</option>
+                        <option value="Periodontics">Periodontics</option>
+                    </select>
                 </div>
+            </div>
 
-                <div class="input-group">
-                    <label for="newStaffRole">Role</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-user-tag"></i>
-                        <select id="newStaffRole" required>
-                            <option value="" disabled selected>-- Select Role --</option>
-                            <option value="Staff">Staff</option>
-                            <option value="Admin">Admin</option>
-                        </select>
-                    </div>
-                </div>
+            <button type="submit"><i class="fa-solid fa-check"></i> Register Doctor</button>
+        </form>
 
-                <button type="submit"><i class="fa-solid fa-check"></i> Register Account</button>
-            </form>
-
-            <p id="registerMessage"></p>
-        </div>
-
-        <!-- RIGHT: Reset password -->
-        <div class="form-card">
-            <h2><i class="fa-solid fa-key"></i> Reset Staff Password</h2>
-
-            <form id="resetPasswordForm">
-                <div class="input-group">
-                    <label for="resetUsernameSelect">Select Staff Member</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-user"></i>
-                        <select id="resetUsernameSelect" required>
-                            <option value="" disabled selected>-- Select Staff --</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="resetNewPassword">New Password</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="resetNewPassword" minlength="6" required>
-                    </div>
-                </div>
-
-                <button type="submit"><i class="fa-solid fa-key"></i> Reset Password</button>
-            </form>
-
-            <p id="resetMessage"></p>
-        </div>
-
+        <p id="message"></p>
     </div>
-
-    <!-- View-only staff list -->
-    <div class="form-card" style="margin-top: 24px;">
-        <h2><i class="fa-solid fa-users"></i> All Staff Accounts</h2>
-        <table id="staffTable">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Role</th>
-            </tr>
-            </thead>
-            <tbody id="staffTableBody"></tbody>
-        </table>
-    </div>
-
 </main>
 
 <script src="js/auth.js"></script>
-<script src="js/manage-staff.js"></script>
+<script src="js/register-doctor.js"></script>
 </body>
 </html>

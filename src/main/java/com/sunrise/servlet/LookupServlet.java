@@ -29,6 +29,16 @@ public class LookupServlet extends HttpServlet {
         } else if ("dentists".equals(type)) {
             DentistDAO dentistDAO = new DentistDAO();
             out.print(dentistDAO.getAllDentistsJson());
+        } else if ("patientByContact".equals(type)) {
+            String contact = request.getParameter("contact");
+
+            if (contact == null || contact.isEmpty()) {
+                out.print("{\"error\": \"Contact number is required\"}");
+                return;
+            }
+
+            PatientDAO patientDAO = new PatientDAO();
+            out.print(patientDAO.getPatientByContactJson(contact));
         } else {
             out.print("{\"error\": \"Invalid lookup type\"}");
         }

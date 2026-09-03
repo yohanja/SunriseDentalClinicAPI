@@ -172,4 +172,29 @@ public class PatientDAO {
         return "{\"error\": \"Patient not found\"}";
     }
 
+    public String getPatientByContactJson(String contactNumber) {
+        String sql = "SELECT patient_id, patient_name, address, contact_number, email FROM Patient WHERE contact_number = ?";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, contactNumber);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return "{"
+                        + "\"id\":" + rs.getInt("patient_id") + ","
+                        + "\"name\":\"" + rs.getString("patient_name") + "\","
+                        + "\"address\":\"" + rs.getString("address") + "\","
+                        + "\"contact\":\"" + rs.getString("contact_number") + "\","
+                        + "\"email\":\"" + (rs.getString("email") != null ? rs.getString("email") : "") + "\""
+                        + "}";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "{\"error\": \"No patient found with that contact number\"}";
+    }
+
 }
