@@ -10,7 +10,8 @@ public class BillDAO {
 
     private static final double CONSULTATION_FEE = 1000.00;
 
-    private double getPriceForTreatment(String treatmentType) {
+    //    private double getPriceForTreatment(String treatmentType) {
+    double getPriceForTreatment(String treatmentType) {
         switch (treatmentType) {
             case "Cleaning":
                 return 3000.00;
@@ -21,6 +22,12 @@ public class BillDAO {
             default:
                 return 2000.00;
         }
+    }
+
+    //    Added for TASK C Testing
+    double calculateTotal(String treatmentType) {
+        double treatmentCost = getPriceForTreatment(treatmentType);
+        return treatmentCost + CONSULTATION_FEE;
     }
 
     public String generateBill(int appointmentId) {
@@ -38,9 +45,13 @@ public class BillDAO {
                 return "No appointment found with ID: " + appointmentId;
             }
 
+//            String treatmentType = rs.getString("treatment_type");
+//            double treatmentCost = getPriceForTreatment(treatmentType);
+//            double totalAmount = treatmentCost + CONSULTATION_FEE;
+
+//          Added for Task C and Commented above 3 lines
             String treatmentType = rs.getString("treatment_type");
-            double treatmentCost = getPriceForTreatment(treatmentType);
-            double totalAmount = treatmentCost + CONSULTATION_FEE;
+            double totalAmount = calculateTotal(treatmentType);
 
             PreparedStatement insertStmt = conn.prepareStatement(insertBillSql);
             insertStmt.setInt(1, appointmentId);

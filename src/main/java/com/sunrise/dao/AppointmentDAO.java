@@ -11,6 +11,10 @@ public class AppointmentDAO {
     public int addAppointment(String patientName, String address, String contactNumber, String email,
                               int dentistId, String treatmentType,
                               String appointmentDate, String appointmentTime) {
+// Added for Task C - Testings
+        if (!validateAppointmentInfo(patientName, contactNumber, treatmentType, appointmentDate, appointmentTime)) {
+            return -1;
+        }
 
         PatientDAO patientDAO = new PatientDAO();
         int patientId = patientDAO.findOrCreatePatient(patientName, address, contactNumber, email);
@@ -156,4 +160,26 @@ public class AppointmentDAO {
         json.append("]");
         return json.toString();
     }
+
+//    added for Task C - Testings
+boolean validateAppointmentInfo(String patientName, String contactNumber,
+                                String treatmentType, String appointmentDate, String appointmentTime) {
+
+    if (patientName == null || patientName.trim().isEmpty()) {
+        return false;
+    }
+    if (contactNumber == null || contactNumber.trim().isEmpty()) {
+        return false;
+    }
+    if (treatmentType == null || treatmentType.trim().isEmpty()) {
+        return false;
+    }
+    if (appointmentDate == null || appointmentDate.trim().isEmpty()) {
+        return false;
+    }
+    if (appointmentTime == null || appointmentTime.trim().isEmpty()) {
+        return false;
+    }
+    return true;
+}
 }
