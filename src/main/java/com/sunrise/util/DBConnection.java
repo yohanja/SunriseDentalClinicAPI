@@ -17,7 +17,7 @@ public class DBConnection {
 
                 String url = "jdbc:mysql://127.0.0.1:3306/sunrise_dental_clinic";
                 String username = "root";
-                String password = "Yohan@002470";
+                String password = System.getenv("DB_PASSWORD");
 
                 connection = DriverManager.getConnection(url, username, password);
                 System.out.println("Database connected successfully!");
